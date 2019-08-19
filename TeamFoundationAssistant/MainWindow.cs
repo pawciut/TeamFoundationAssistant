@@ -32,5 +32,10 @@ namespace TeamFoundationAssistant
             var xmlsXaver = new GanttXMLSaver(null, null, null, null,null);
             xmlsXaver.Save(null);
         }
+
+        private void btnDeploy_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -34,6 +34,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ganttProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testGanttProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jobsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDeploy = new System.Windows.Forms.ToolStripMenuItem();
             this.tscMain.TopToolStripPanel.SuspendLayout();
             this.tscMain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -61,7 +63,8 @@
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.ganttProjectToolStripMenuItem});
+            this.ganttProjectToolStripMenuItem,
+            this.jobsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -79,7 +82,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -97,6 +100,21 @@
             this.testGanttProjectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.testGanttProjectToolStripMenuItem.Text = "test";
             this.testGanttProjectToolStripMenuItem.Click += new System.EventHandler(this.testGanttProjectToolStripMenuItem_Click);
+            // 
+            // jobsToolStripMenuItem
+            // 
+            this.jobsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnDeploy});
+            this.jobsToolStripMenuItem.Name = "jobsToolStripMenuItem";
+            this.jobsToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.jobsToolStripMenuItem.Text = "Jobs";
+            // 
+            // btnDeploy
+            // 
+            this.btnDeploy.Name = "btnDeploy";
+            this.btnDeploy.Size = new System.Drawing.Size(180, 22);
+            this.btnDeploy.Text = "Deploy";
+            this.btnDeploy.Click += new System.EventHandler(this.btnDeploy_Click);
             // 
             // MainWindow
             // 
@@ -125,6 +143,8 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ganttProjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testGanttProjectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem jobsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnDeploy;
     }
 }
 
