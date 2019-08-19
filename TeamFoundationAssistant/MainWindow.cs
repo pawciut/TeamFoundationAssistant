@@ -29,7 +29,7 @@ namespace TeamFoundationAssistant
 
             GanttProject project = new GanttProject();
 
-            var xmlsXaver = new GanttXMLSaver(null, null, null, null);
+            var xmlsXaver = new GanttXMLSaver(null, null, null, null,null);
             xmlsXaver.Save(null);
         }
     }

@@ -82,5 +82,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Libs\GanttProjectDotNet.dll" />
+    <Content Include="Libs\GanttProjectDotNet.pdb" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
