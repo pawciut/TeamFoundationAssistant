@@ -13,87 +13,90 @@ using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using System.Net.Http;
 using Newtonsoft.Json;
- 
+using Microsoft.TeamFoundation.WorkItemTracking.WebApi.Models;
+using Microsoft.TeamFoundation.WorkItemTracking.WebApi;
+using Microsoft.VisualStudio.Services.Common;
+
 namespace TeamFoundationAssistant.Forms
 {
     public class ExecuteQuery
     {
-        //readonly string _uri;
-        //readonly string _personalAccessToken;
-        //readonly string _project;
+        readonly string _uri;
+        readonly string _personalAccessToken;
+        readonly string _project;
 
-        ///// <summary>
-        ///// Constructor. Manually set values to match yourorganization. 
-        ///// </summary>
-        //public ExecuteQuery()
-        //{
-        //    _uri = "https://dev.azure.com/{orgName}";
-        //    _personalAccessToken = "personal access token";
-        //    _project = "project name";
-        //}
+        /// <summary>
+        /// Constructor. Manually set values to match yourorganization. 
+        /// </summary>
+        public ExecuteQuery()
+        {
+            _uri = "https://dev.azure.com/{orgName}";
+            _personalAccessToken = "personal access token";
+            _project = "project name";
+        }
 
-        ///// <summary>
-        ///// Execute a WIQL query to return a list of bugs using the .NET client library
-        ///// </summary>
-        ///// <returns>List of Microsoft.TeamFoundation.WorkItemTracking.WebApi.Models.WorkItem</returns>
-        //public async Task<List<WorkItem>> RunGetBugsQueryUsingClientLib()
-        //{
-        //    Uri uri = new Uri(_uri);
-        //    string personalAccessToken = _personalAccessToken;
-        //    string project = _project;
+        /// <summary>
+        /// Execute a WIQL query to return a list of bugs using the .NET client library
+        /// </summary>
+        /// <returns>List of Microsoft.TeamFoundation.WorkItemTracking.WebApi.Models.WorkItem</returns>
+        public async Task<List<WorkItem>> RunGetBugsQueryUsingClientLib()
+        {
+            Uri uri = new Uri(_uri);
+            string personalAccessToken = _personalAccessToken;
+            string project = _project;
 
-        //    VssBasicCredential credentials = new VssBasicCredential("", _personalAccessToken);
+            VssBasicCredential credentials = new VssBasicCredential("", _personalAccessToken);
 
-        //    //create a wiql object and build our query
-        //    Wiql wiql = new Wiql()
-        //    {
-        //        Query = "Select [State], [Title] " +
-        //                "From WorkItems " +
-        //                "Where [Work Item Type] = 'Bug' " +
-        //                "And [System.TeamProject] = '" + project + "' " +
-        //                "And [System.State] <> 'Closed' " +
-        //                "Order By [State] Asc, [Changed Date] Desc"
-        //    };
+            //create a wiql object and build our query
+            Wiql wiql = new Wiql()
+            {
+                Query = "Select [State], [Title] " +
+                        "From WorkItems " +
+                        "Where [Work Item Type] = 'Bug' " +
+                        "And [System.TeamProject] = '" + project + "' " +
+                        "And [System.State] <> 'Closed' " +
+                        "Order By [State] Asc, [Changed Date] Desc"
+            };
 
-        //    //create instance of work item tracking http client
-        //    using (WorkItemTrackingHttpClient workItemTrackingHttpClient = new WorkItemTrackingHttpClient(uri, credentials))
-        //    {
-        //        //execute the query to get the list of work items in the results
-        //        WorkItemQueryResult workItemQueryResult = await workItemTrackingHttpClient.QueryByWiqlAsync(wiql);
+            //create instance of work item tracking http client
+            using (WorkItemTrackingHttpClient workItemTrackingHttpClient = new WorkItemTrackingHttpClient(uri, credentials))
+            {
+                //execute the query to get the list of work items in the results
+                WorkItemQueryResult workItemQueryResult = await workItemTrackingHttpClient.QueryByWiqlAsync(wiql);
 
-        //        //some error handling                
-        //        if (workItemQueryResult.WorkItems.Count() != 0)
-        //        {
-        //            //need to get the list of our work item ids and put them into an array
-        //            List<int> list = new List<int>();
-        //            foreach (var item in workItemQueryResult.WorkItems)
-        //            {
-        //                list.Add(item.Id);
-        //            }
-        //            int[] arr = list.ToArray();
+                //some error handling                
+                if (workItemQueryResult.WorkItems.Count() != 0)
+                {
+                    //need to get the list of our work item ids and put them into an array
+                    List<int> list = new List<int>();
+                    foreach (var item in workItemQueryResult.WorkItems)
+                    {
+                        list.Add(item.Id);
+                    }
+                    int[] arr = list.ToArray();
 
-        //            //build a list of the fields we want to see
-        //            string[] fields = new string[3];
-        //            fields[0] = "System.Id";
-        //            fields[1] = "System.Title";
-        //            fields[2] = "System.State";
+                    //build a list of the fields we want to see
+                    string[] fields = new string[3];
+                    fields[0] = "System.Id";
+                    fields[1] = "System.Title";
+                    fields[2] = "System.State";
 
-        //            //get work items for the ids found in query
-        //            var workItems = await workItemTrackingHttpClient.GetWorkItemsAsync(arr, fields, workItemQueryResult.AsOf);
+                    //get work items for the ids found in query
+                    var workItems = await workItemTrackingHttpClient.GetWorkItemsAsync(arr, fields, workItemQueryResult.AsOf);
 
-        //            Console.WriteLine("Query Results: {0} items found", workItems.Count);
+                    Console.WriteLine("Query Results: {0} items found", workItems.Count);
 
-        //            //loop though work items and write to console
-        //            foreach (var workItem in workItems)
-        //            {
-        //                Console.WriteLine("{0}          {1}                     {2}", workItem.Id, workItem.Fields["System.Title"], workItem.Fields["System.State"]);
-        //            }
+                    //loop though work items and write to console
+                    foreach (var workItem in workItems)
+                    {
+                        Console.WriteLine("{0}          {1}                     {2}", workItem.Id, workItem.Fields["System.Title"], workItem.Fields["System.State"]);
+                    }
 
-        //            return workItems;
-        //        }
+                    return workItems;
+                }
 
-        //        return null;
-        //    }
-        //}
+                return null;
+            }
+        }
     }
 }
