@@ -30,8 +30,8 @@ namespace TeamFoundationAssistant.Forms
         /// </summary>
         public ExecuteQuery()
         {
-            _uri = "https://dev.azure.com/{orgName}";
-            _personalAccessToken = "personal access token";
+            _uri = "http://192.168.222.102/mbdvc";//"https://dev.azure.com/{orgName}";
+            _personalAccessToken = "";
             _project = "project name";
         }
 

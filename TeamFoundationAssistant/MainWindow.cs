@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeamFoundationAssistant.Forms;
 
 namespace TeamFoundationAssistant
 {
@@ -35,7 +36,8 @@ namespace TeamFoundationAssistant
 
         private void btnDeploy_Click(object sender, EventArgs e)
         {
-
+            DeployForm deployForm = new DeployForm();
+            deployForm.Show();
         }
     }
 }
