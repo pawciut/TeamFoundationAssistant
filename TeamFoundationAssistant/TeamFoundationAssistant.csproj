@@ -71,6 +71,7 @@
     <Compile Include="Forms\DeployForm.Designer.cs">
       <DependentUpon>DeployForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TestABC.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
